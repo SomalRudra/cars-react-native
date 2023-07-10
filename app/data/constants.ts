@@ -1,0 +1,1 @@
+export const baseUrl = 'https://api.api-ninjas.com/v1';
