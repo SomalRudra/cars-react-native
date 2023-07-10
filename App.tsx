@@ -6,18 +6,22 @@ import { screenOptions } from './app/navigation/NavigationConstants';
 import RoutePath from './app/navigation/RoutePath';
 import CarList from './app/presentation/carlist/CarList';
 import CarDetail from './app/presentation/cardetail/CarDetail';
+import { Provider } from 'react-redux';
+import { store } from './app/redux/store';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={screenOptions}>
-        <Stack.Screen name={RoutePath.CarList} component={CarList} />
-        <Stack.Screen name={RoutePath.CarDetail} component={CarDetail} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={screenOptions}>
+          <Stack.Screen name={RoutePath.CarList} component={CarList} />
+          <Stack.Screen name={RoutePath.CarDetail} component={CarDetail} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

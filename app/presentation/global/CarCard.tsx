@@ -18,13 +18,13 @@ const CarCard = (props:PropType) => {
         { label: 'Year:', value: car.year }
       ];
 
-    const carDetailText = (label:string, text: string) => {
-        return <Text style={style.cardText}>{label}: {text}</Text> 
-    }
+    
     return (
         <Pressable style={style.cardParent} onPress={onPress}>
-        <ImageBackground style={style.cardBg} source={require("../../../assets/car-bg.png")}>
-            <View>
+        <ImageBackground 
+            style={style.cardBg} 
+            source={require("../../../assets/car-bg.png")}>
+            <View style={style.cardTextParent}>
             {carDetails.map((detail, index) => (
                 <Text key={index} style={style.cardText}>
                 {detail.label} {detail.value}

@@ -12,12 +12,15 @@ import CarCard from "../global/CarCard";
 import { ImagePath } from "../../global/imgsource";
 import style from "./CarList-style";
 import EmptyPlaceholder from "../global/EmptyPlaceholder";
+import { useDispatch } from "react-redux";
+import { setCar } from "../../redux/action/CarAction";
 
 type HeaderPropType = {
     title: string
 }
 
 const CarList = ({route, navigation} : CarListProps) => {
+    const dispatch = useDispatch();
     const [cars, setCars] = useState<Car[]>();
     const [modelName, setModelName] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +29,7 @@ const CarList = ({route, navigation} : CarListProps) => {
     const headerTitle = "Find Your Car";
 
     const goToDetail = (car: Car) => {
+       dispatch(setCar(car))
         navigation.navigate(RoutePath.CarDetail, {car})
     };
     const fetchData = useCallback(
